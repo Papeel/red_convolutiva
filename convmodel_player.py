@@ -21,7 +21,7 @@ with tf.variable_scope('ConvNet', reuse=False):
     o3 = tf.layers.conv2d(inputs=o2, filters=64, kernel_size=3, activation=tf.nn.relu)
     o4 = tf.layers.max_pooling2d(inputs=o3, pool_size=2, strides=2)
 
-    h = tf.layers.dense(inputs=tf.reshape(o4, [1, 18*33*64]), units=5, activation=tf.nn.relu)
+    h = tf.layers.dense(inputs=tf.reshape(o4, [1, 18*33*64]), units=10, activation=tf.nn.relu)
     y = tf.layers.dense(inputs=h, units=3, activation=tf.nn.softmax)
 
 # --------------------------------------------------
@@ -32,7 +32,7 @@ with tf.variable_scope('ConvNet', reuse=False):
 
 import cv2
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 # Add ops to save and restore all the variables.
 saver = tf.train.Saver()
